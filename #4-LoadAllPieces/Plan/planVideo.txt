@@ -1,0 +1,6 @@
+This video task :-
+
+1> draw all chess pieces
+2> select only one piece at a time
+3> rest figure out during the process
+😁😁😁
