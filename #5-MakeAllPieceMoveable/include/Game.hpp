@@ -18,15 +18,17 @@ namespace Candy
     private:
         void init();
         void drawBoard();
+        void updateMousePosition();
         void getMousePosition(int* x,int * y);
         bool m_Running = false;
 
         Board* m_Board;
-        bool m_Is_Selected; 
+        bool m_Is_Selected;
+        int *m_CurrentmouseX;
+        int *m_CurrentmouseY;
         SDL_Window* m_Window;
         SDL_Renderer* m_Renderer;
         SDL_Event* m_Event;
-
         PiecesManger* m_BoardPieces;
     };
 };

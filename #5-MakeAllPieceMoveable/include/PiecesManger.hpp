@@ -28,8 +28,10 @@ namespace Candy {
 
         void CalculatePieces();
         void drawPieces();
-        void updateBoardPieces();
-        void isPieceSelect(bool p_state);
+        void updateBoardPieces(int* p_MouseX,int* p_MouseY);
+        void isPieceSelect(bool p_state,int* p_MouseX,int* p_MouseY);
+
+        void setSize(int p_PieceSize);
     private:
         void init();
         void initDefaultBoard();
@@ -42,7 +44,7 @@ namespace Candy {
         int m_LastPiece_Row;
         int m_LastPiece_Col;
 
-        std::array<std::array<Piece,MAX_PIECES_LINE>,MAX_PIECES_LINE> m_DrawPieces;
+        Piece** m_DrawPieces;
         std::array<std::array<int, MAX_PIECES_LINE>, MAX_PIECES_LINE> m_BoardPieces;
     };
 }

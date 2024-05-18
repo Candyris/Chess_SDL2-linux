@@ -6,7 +6,6 @@
           :m_BoardSize(p_SizeBoard) , m_Renderer(p_Renderer)
       {
           m_PiecesSize = m_BoardSize / MAX_PIECES_LINE;
-
       }
 
       void Board::drawBoard()
@@ -29,5 +28,9 @@
              }
          }
 
+      }
+      int Board::getPieceSize()
+      {
+          return m_PiecesSize;
       }
   };

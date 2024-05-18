@@ -1,7 +1,9 @@
   #include "../include/Pieces.hpp"
   #include "../include/TextureManger.hpp"
+#include <SDL2/SDL_error.h>
 #include <cstddef>
   #include <iostream> // debug
+  #include <SDL2/SDL_image.h>
  
 namespace Candy{
     // static Renderer stuff  
@@ -33,6 +35,17 @@ namespace Candy{
         m_PieceTexture = TextureManger::GetTexture(GetRenderer(),p_FilePath);
         m_PieceProperty->w = m_PieceProperty->h = p_PieceSize; 
     }
+    void Piece::Log ()
+    {
+        std::cout<<"Position x: "<<m_PieceProperty->x << " , Position y:"<<m_PieceProperty->y <<std::endl;
+        std::cout<<"Size: "<<m_PieceProperty->w<<", Texture = : ";
+        if (m_PieceTexture)
+            std::cout<<"APPILED";
+        else 
+            std::cout<<"NOT APPILED";
+        std::cout<<std::endl;
+    }
+
     void Piece::setPosition(int p_X,int  p_Y)
     {
         m_PieceProperty->x = p_X + m_OrginOffsetX;
@@ -45,11 +58,21 @@ namespace Candy{
     }
     void Piece::setTextureFromPath(const char* p_FilePath)
     {
-        m_PieceTexture = TextureManger::GetTexture(GetRenderer(),p_FilePath);
+        SDL_Surface* surface = IMG_Load(p_FilePath);
+        if (!surface) {
+          //  std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;
+            return;
+        }
+        m_PieceTexture = SDL_CreateTextureFromSurface(s_Renderer, surface);
+        SDL_FreeSurface(surface);
+        if (!m_PieceTexture) {
+           // std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
+            return;
+        }
     }
     void Piece::setPieceSize(int p_Size)
     {
-        m_PieceProperty->w = m_PieceProperty->h = p_Size;    
+        m_PieceProperty->w = m_PieceProperty->h = p_Size;   
     }
     
     void Piece::draw()
@@ -59,7 +82,8 @@ namespace Candy{
          {
               TextureManger::Render(GetRenderer(), m_PieceTexture, m_PieceProperty);
          } else {
-              std::cerr << "Cannot draw piece, texture is NULL" << std::endl;
+             // std::cout<<SDL_GetError();
+             // std::cerr << "Cannot draw piece, texture is NULL" << std::endl;
          }
     }
 

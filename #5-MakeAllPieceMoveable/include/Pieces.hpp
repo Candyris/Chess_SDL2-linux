@@ -34,6 +34,7 @@ namespace Candy{
         void setTextureFromPath(const char* p_FilePath);
         void setPieceSize(int p_Size);
 
+        void Log();
         void draw();
 
         // make it easy so all have same renderer 
