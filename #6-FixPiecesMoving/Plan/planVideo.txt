@@ -1,0 +1,9 @@
+see i am facing problem in Piece class lack some so i will adding them 😅😅
+
+Piece Class
+- handle non texture draw calls
+!! something is deleting texture before draw call
+
+PieceManger Class 
+remove vector -> DrawPieces
+instead using Array for and use more space not focusing in optimusing 😅😅f
