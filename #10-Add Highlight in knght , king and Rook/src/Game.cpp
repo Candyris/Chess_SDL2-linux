@@ -36,7 +36,7 @@ namespace Candy{
     bool  Game::isRunning() const
     {
         return m_Running;
-    }
+    } // hello
     void Game::pollEvent()
     {
          while (SDL_PollEvent(m_Event)) {
