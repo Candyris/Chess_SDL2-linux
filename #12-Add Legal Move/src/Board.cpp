@@ -197,7 +197,6 @@
               {
                   SetHighlight(StartPos.Row - 1,StartPos.Col - 2);
               }
-
               if (StartPos.Row + 1 <= 7 && StartPos.Row + 1 >= 0 && StartPos.Col - 2 <= 7 && StartPos.Col - 2 >= 0)
               {
                   SetHighlight(StartPos.Row + 1, StartPos.Col - 2);
